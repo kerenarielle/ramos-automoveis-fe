@@ -1,0 +1,26 @@
+.dialog-filter .MuiPaper-root {
+  width: 700px;
+}
+
+.dialog-filter form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.dialog-filter .css-1h51icj-MuiAutocomplete-root {
+  width: 32%;
+  margin-bottom: 20px;
+}
+
+.dialog-filter .actions {
+  display: flex;
+  justify-content: end;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.dialog-filter .actions button {
+  margin-left: 20px
+}

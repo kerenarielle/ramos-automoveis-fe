@@ -1,0 +1,9 @@
+.actions-filters {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 30px;
+}
+
+.actions-filters button {
+  margin-left: 20px;
+}

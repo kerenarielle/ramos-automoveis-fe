@@ -1,0 +1,32 @@
+.header {
+  background-color: #bec9d4 !important;
+  color: #3c3c3c !important;
+}
+
+.header .link {
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.header .link:hover {
+  text-decoration: underline;
+  text-decoration-color: gray;
+}
+
+.header .logout {
+  font-size: 14px;
+}
+
+.header .logout svg{
+  margin-left: 15px;
+}
+
+.logo img {
+  height: 40px;
+}
+
+@media screen and (max-width: 900px) {
+  .logo-default {
+    display: none;
+  }
+}

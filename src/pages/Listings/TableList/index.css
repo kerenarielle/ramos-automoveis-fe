@@ -1,0 +1,30 @@
+
+tbody tr:hover {
+  cursor: pointer;
+  background-color: #f7f7f7;
+}
+
+thead th {
+  text-align: center !important;
+  background-color: #efefef;
+}
+
+.actions button:hover {
+  color: #64b5f6;
+}
+
+.MuiTablePagination-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MuiTablePagination-select {
+  border: none;
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.MuiTablePagination-displayedRows {
+  margin: 0 30px;
+}

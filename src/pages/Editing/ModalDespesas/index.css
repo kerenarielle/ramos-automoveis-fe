@@ -1,0 +1,9 @@
+.modal-despesas .actions {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+}
+
+.modal-despesas .form-container {
+  margin: 20px;
+}

@@ -1,0 +1,65 @@
+.card-component {
+  align-items: flex-end;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  margin-bottom: 30px;
+  padding: 20px;
+  position: relative;
+  width: 94%;
+}
+
+.card-component__container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: end;
+  padding: 0 !important;
+}
+
+.compra {
+  background: #fe8787;
+}
+
+.venda {
+  background: #4c59f9;
+}
+
+.card-component span:first-child{
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.card-component span:last-child{
+  font-size: 14;
+  font-weight: 400;
+}
+
+.card-component.compra:before {
+  content: '';
+  background-image: url('../../../../assets/rising.png');
+  background-repeat: no-repeat;
+  display: block;
+  content: '';
+  width: 100px;
+  height: 69px;
+  position: absolute;
+  left: 6px;
+  background-size: contain;
+  bottom: 4px;
+}
+
+.card-component.venda:before {
+  content: '';
+  background-image: url('../../../../assets/diagram.png');
+  background-repeat: no-repeat;
+  display: block;
+  content: '';
+  width: 100px;
+  height: 69px;
+  position: absolute;
+  left: 6px;
+  background-size: contain;
+  bottom: 4px;
+}

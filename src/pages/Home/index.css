@@ -1,0 +1,12 @@
+.home .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home .cards {
+  width: 49%;
+}
+
+.home td {
+  text-align: center;
+}
