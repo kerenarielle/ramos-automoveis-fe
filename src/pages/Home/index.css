@@ -10,3 +10,14 @@
 .home td {
   text-align: center;
 }
+
+@media screen and (max-width: 900px) {
+  .home .container {
+    flex-direction: column;
+  }
+
+  .home .cards {
+    width: 100%;
+    box-shadow: rgba(168, 165, 168, 0.47) 2px 6px 6px 0px;
+  }
+}
