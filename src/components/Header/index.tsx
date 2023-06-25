@@ -91,7 +91,7 @@ const ResponsiveAppBar = () => {
                 </MenuItem>
               ))}
             </Menu>
-            <a href="/home" className="logo">
+            <a href="/" className="logo">
               <img src={LogoRamos} alt="Ramos Automoveis" />
             </a>
           </Box>

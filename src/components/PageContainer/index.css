@@ -8,4 +8,8 @@
   .new-car .container {
     margin: 20px;
   }
+
+  .container {
+    margin-top: 20px;
+  }
 }

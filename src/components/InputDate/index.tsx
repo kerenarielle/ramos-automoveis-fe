@@ -36,7 +36,7 @@ const InputDate: FunctionComponent<InputLabelProps> = ({
       <TextField
         onChange={handleChange}
         error={!!errors[name]}
-        value={inputValue}
+        defaultValue={inputValue}
         helperText={errors[name] !== undefined ? errors[name].message : null}
         id={name}
         type={type}
