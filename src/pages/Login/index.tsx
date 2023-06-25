@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../contexts/auth";
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 
+import "./index.css";
+
 const Login: React.FC = () => {
   const { Login } = useAuth();
   const { register, handleSubmit } = useForm();
@@ -19,6 +21,7 @@ const Login: React.FC = () => {
   return (
     <Container component="main" maxWidth="sm">
       <Box
+        className="login"
         sx={{
           boxShadow: 3,
           borderRadius: 2,
