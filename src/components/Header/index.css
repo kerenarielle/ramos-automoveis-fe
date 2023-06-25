@@ -25,6 +25,12 @@
   height: 40px;
 }
 
+@media screen and (max-width: 600px) {
+  .header .logout {
+    font-size: 1px;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .logo-default {
     display: none;

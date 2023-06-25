@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent } from "react";
 
 import TextField from "@mui/material/TextField";
 import { FormControl } from "@mui/material";
@@ -22,22 +22,11 @@ const Inputs: FunctionComponent<InputLabelProps> = ({
   errors,
   type,
 }) => {
-  const [inputValue, setInputValue] = useState<string | undefined>(value);
-
-  useEffect(() => {
-    setInputValue(value);
-  }, [value]);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
   return (
     <FormControl fullWidth>
       <TextField
-        onChange={handleChange}
         error={!!errors[name]}
-        value={inputValue}
+        defaultValue={value || ""}
         helperText={errors[name] !== undefined ? errors[name].message : null}
         id={name}
         type={type}
