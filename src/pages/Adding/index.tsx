@@ -19,7 +19,7 @@ const Adding: FunctionComponent<{}> = () => {
 
   return (
     <>
-      <PageContainer>
+      <PageContainer className="new-car">
         <section>
           <h2>Cadastro de novos veículos</h2>
 

@@ -24,3 +24,13 @@
 .dialog-filter .actions button {
   margin-left: 20px
 }
+
+@media screen and (max-width: 500px){
+  .dialog-filter form {
+    flex-direction: column;
+  }
+
+  .dialog-filter .css-1h51icj-MuiAutocomplete-root {
+    width: 100%;
+  }
+}
