@@ -22,17 +22,22 @@ const Inputs: FunctionComponent<InputLabelProps> = ({
   errors,
   type,
 }) => {
-  const [defaultValue, setDefaultValue] = useState<string | undefined>(value);
+  const [inputValue, setInputValue] = useState<string | undefined>(value);
 
   useEffect(() => {
-    setDefaultValue(value);
+    setInputValue(value);
   }, [value]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
 
   return (
     <FormControl fullWidth>
       <TextField
+        onChange={handleChange}
         error={!!errors[name]}
-        defaultValue={defaultValue}
+        value={inputValue}
         helperText={errors[name] !== undefined ? errors[name].message : null}
         id={name}
         type={type}

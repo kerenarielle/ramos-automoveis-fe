@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 
 import TextField from "@mui/material/TextField";
 import { FormControl } from "@mui/material";
@@ -21,19 +21,31 @@ const InputDate: FunctionComponent<InputLabelProps> = ({
   register,
   errors,
   type,
-}) => (
-  <FormControl fullWidth>
-    <TextField
-      error={!!errors[name]}
-      defaultValue={value}
-      helperText={errors[name] !== undefined ? errors[name].message : null}
-      id={name}
-      type={type}
-      label={label}
-      {...register(name, validationSchema)}
-      InputLabelProps={{ shrink: true }}
-    />
-  </FormControl>
-);
+}) => {
+  const [inputValue, setInputValue] = useState<string | undefined>(value);
+
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+  return (
+    <FormControl fullWidth>
+      <TextField
+        onChange={handleChange}
+        error={!!errors[name]}
+        value={inputValue}
+        helperText={errors[name] !== undefined ? errors[name].message : null}
+        id={name}
+        type={type}
+        label={label}
+        {...register(name, validationSchema)}
+        InputLabelProps={{ shrink: true }}
+      />
+    </FormControl>
+  );
+};
 
 export default InputDate;
