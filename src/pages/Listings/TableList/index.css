@@ -28,3 +28,10 @@ thead th {
 .MuiTablePagination-displayedRows {
   margin: 0 30px;
 }
+
+@media screen and (max-width: 600px) {
+  .MuiTablePagination-toolbar {
+    justify-content: left;
+    margin-left: 20px;
+  }
+}
