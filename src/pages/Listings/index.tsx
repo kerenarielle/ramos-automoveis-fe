@@ -101,7 +101,7 @@ const Listings: React.FC = () => {
   return (
     <PageContainer>
       <section>
-        <Typography variant="h6">Estoque</Typography>
+        <Typography variant="h6">Lista de veículos cadastrados</Typography>
         <div className="actions-filters">
           {tag && (
             <Chip
