@@ -1,21 +1,23 @@
 import { FunctionComponent, useCallback, useRef } from "react";
-import { Button, Dialog, DialogTitle } from "@mui/material";
-import Inputs from "../../../components/Inputs";
 import { useForm } from "react-hook-form";
+import { Button, Dialog, DialogTitle } from "@mui/material";
+
+/**
+ * Componentes
+ */
+import Inputs from "../../../components/Inputs";
 import InputPrice from "../../../components/InputPrice";
 import InputDate from "../../../components/InputDate";
+
+/**
+ * Types
+ */
+import { DespesasProps } from "./types";
+
 import "./index.css";
 
-type DespesasProps = {
-  id_despesas: number;
-  description: string;
-  value: string;
-  dt: string;
-  id_car: number;
-};
-
 type Props = {
-  value?: DespesasProps;
+  value: DespesasProps;
   open: boolean;
   onSave: Function;
   onClose: Function;
@@ -37,9 +39,12 @@ const ModalDespesas: FunctionComponent<Props> = ({
 
   const onSubmit = useCallback(
     (data: any) => {
-      onSave(data);
+      onSave({
+        ...value,
+        ...data,
+      });
     },
-    [onSave]
+    [onSave, value]
   );
 
   const handleClose = useCallback(() => onClose(), [onClose]);
@@ -57,7 +62,7 @@ const ModalDespesas: FunctionComponent<Props> = ({
           name="description"
           label="Descrição"
           type="text"
-          value={value?.description}
+          value={value.description}
           errors={errors}
           register={register}
           validationSchema={{
@@ -67,7 +72,7 @@ const ModalDespesas: FunctionComponent<Props> = ({
 
         <InputPrice
           label="Valor da despesa"
-          value={value?.value}
+          value={value.value}
           {...register("value", {
             required: "Campo obrigatório",
           })}
@@ -96,12 +101,10 @@ const ModalDespesas: FunctionComponent<Props> = ({
           }}
         />
 
-        {/* <DialogActions> */}
         <div className="actions">
           <Button onClick={handleClose}>Cancelar</Button>
-          <Button type="submit">Deletar</Button>
+          <Button type="submit">Salvar</Button>
         </div>
-        {/* </DialogActions> */}
       </form>
     </Dialog>
   );

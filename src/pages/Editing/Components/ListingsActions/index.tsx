@@ -46,7 +46,7 @@ const ListingsActions: FunctionComponent<ListingsActionsProps> = ({
                 <EditIcon />
               </IconButton>,
               <IconButton
-                onClick={() => onDeleteDespesas}
+                onClick={() => onDeleteDespesas(id_despesas)}
                 edge="end"
                 aria-label="delete"
               >

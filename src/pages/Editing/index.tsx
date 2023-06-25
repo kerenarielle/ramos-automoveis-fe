@@ -7,27 +7,50 @@ import React, {
   useState,
 } from "react";
 
+/**
+ * Mui Material
+ */
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import PageContainer from "../../components/PageContainer";
-import Form from "../../components/Form";
 import { Button } from "@mui/material";
 
-import "./index.css";
+/**
+ * Components
+ */
+import PageContainer from "../../components/PageContainer";
+import Form from "../../components/Form";
 import ListingsActions from "./Components/ListingsActions";
+import ModalDespesas from "./ModalDespesas";
+
+import "./index.css";
+
+/**
+ * Utils
+ */
 import { CarsProps } from "../../utils/types/Cars";
 import format from "../../utils/format/priceBrazil";
-import ModalDespesas from "./ModalDespesas";
+
 import api from "../../services/api";
+
+/**
+ * Types
+ */
+import { DespesasProps } from "./ModalDespesas/types";
 
 const EditCar: FunctionComponent<{}> = (props) => {
   const [data, setData] = useState<CarsProps>();
   const [valueTab, setValueTab] = useState("1");
   const [despesas, setDespesas] = useState([]);
-  const [despesasEdit, setDespesasEdit] = useState();
+  const [despesasEdit, setDespesasEdit] = useState<DespesasProps>({
+    id_despesas: undefined,
+    description: "",
+    value: "",
+    dt: "",
+    id_car: Number(data?.id_car),
+  });
   const [openModal, setOpenModal] = useState(false);
 
   const formRef = useRef<HTMLFormElement>(null);
@@ -70,7 +93,9 @@ const EditCar: FunctionComponent<{}> = (props) => {
 
   const handleEditDespesas = useCallback(
     (id: number) => {
-      const edit = despesas.find(({ id_despesas }) => id_despesas === id);
+      const edit: DespesasProps = despesas.find(
+        ({ id_despesas }) => id_despesas === id
+      )!;
 
       setDespesasEdit(edit);
       setOpenModal(true);
@@ -78,19 +103,28 @@ const EditCar: FunctionComponent<{}> = (props) => {
     [despesas]
   );
 
-  const handleSaveDespesas = useCallback(async (value: any) => {
-    await api.post("/api/update/despesas", {
-      ...value,
-      id_car: value.id_car || data?.id_car,
-    });
+  const handleSaveDespesas = useCallback(
+    async (value: any) => {
+      await api.post("/api/update/despesas", {
+        ...value,
+        id_car: value.id_car || data?.id_car,
+      });
 
-    setOpenModal(false);
-    window.location.reload();
-  }, []);
+      setOpenModal(false);
+      window.location.reload();
+    },
+    [data]
+  );
 
   const handleCloseModal = useCallback(() => {
     setOpenModal(false);
-    setDespesasEdit(undefined);
+    setDespesasEdit({
+      id_despesas: undefined,
+      description: "",
+      value: "",
+      dt: new Date().toDateString(),
+      id_car: Number(data?.id_car),
+    });
   }, []);
 
   const total =
@@ -101,9 +135,15 @@ const EditCar: FunctionComponent<{}> = (props) => {
       : 0;
 
   const handleNew = useCallback(() => {
+    setDespesasEdit({
+      id_despesas: undefined,
+      description: "",
+      value: "",
+      dt: new Date().toDateString(),
+      id_car: Number(data?.id_car),
+    });
     setOpenModal(true);
-    setDespesasEdit(undefined);
-  }, []);
+  }, [despesasEdit, data]);
 
   return (
     <>
