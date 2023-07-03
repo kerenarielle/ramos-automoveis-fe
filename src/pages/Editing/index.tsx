@@ -76,10 +76,15 @@ const EditCar: FunctionComponent<{}> = (props) => {
     setValueTab(newValue);
   };
 
-  const handleSave = useCallback(
-    async (value: any) => await api.post("/api/update/car", { ...value }),
-    []
-  );
+  const handleSave = useCallback(async (value: any) => {
+    const {
+      data: { status },
+    } = await api.post("/api/update/car", { ...value });
+
+    if (status === 200) {
+      window.location.reload();
+    }
+  }, []);
 
   const onDelete = useCallback(async (value: number) => {
     const despesas = await api.delete(`/api/despesas/${value}`);
