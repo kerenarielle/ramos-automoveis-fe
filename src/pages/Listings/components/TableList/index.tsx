@@ -1,4 +1,4 @@
-import { format as formatDate, utcToZonedTime } from "date-fns-tz";
+import moment from "moment-timezone";
 
 import React, { useState } from "react";
 import {
@@ -20,7 +20,6 @@ import format from "../../../../utils/format/priceBrazil";
 import accumulator from "../../../../utils/accumulator";
 
 import "./index.css";
-import { parseISO } from "date-fns";
 
 function calcula(dateEarlier: Date, dateLater: Date) {
   var one_day = 1000 * 60 * 60 * 24;
@@ -110,24 +109,16 @@ const TableList: React.FC<TableListProps> = ({ data, onDelete }) => {
                     <TableCell className="text-center">{placa}</TableCell>
                     <TableCell className="text-center">
                       {dt_compra
-                        ? formatDate(
-                            utcToZonedTime(
-                              parseISO(dt_compra),
-                              "America/Sao_Paulo"
-                            ),
-                            "dd/MM/yyyy"
-                          )
+                        ? moment(dt_compra, "YYYY-MM-DDTHH:mm:ss.SSSZ")
+                            .utcOffset(180)
+                            .format("DD/MM/YYYY")
                         : ""}
                     </TableCell>
                     <TableCell className="text-center">
                       {dt_venda
-                        ? formatDate(
-                            utcToZonedTime(
-                              parseISO(dt_venda),
-                              "America/Sao_Paulo"
-                            ),
-                            "dd/MM/yyyy"
-                          )
+                        ? moment(dt_venda, "YYYY-MM-DDTHH:mm:ss.SSSZ")
+                            .utcOffset(180)
+                            .format("DD/MM/YYYY")
                         : ""}
                     </TableCell>
                     <TableCell>

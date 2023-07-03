@@ -1,5 +1,4 @@
-import { format, parseISO } from "date-fns";
-import { utcToZonedTime } from "date-fns-tz";
+import moment from "moment-timezone";
 
 import {
   ForwardRefRenderFunction,
@@ -163,10 +162,9 @@ const Form: ForwardRefRenderFunction<HTMLFormElement, FormCarProps> = (
         type="date"
         value={
           value && value.dt_compra
-            ? format(
-                utcToZonedTime(parseISO(value.dt_compra), "America/Sao_Paulo"),
-                "yyyy-MM-dd"
-              )
+            ? moment(value.dt_compra, "YYYY-MM-DDTHH:mm:ss.SSSZ")
+                .utcOffset(180)
+                .format("YYYY-MM-DD")
             : ""
         }
         errors={errors}
@@ -182,10 +180,9 @@ const Form: ForwardRefRenderFunction<HTMLFormElement, FormCarProps> = (
         type="date"
         value={
           value && value.dt_venda
-            ? format(
-                utcToZonedTime(parseISO(value.dt_venda), "America/Sao_Paulo"),
-                "yyyy-MM-dd"
-              )
+            ? moment(value.dt_venda, "YYYY-MM-DDTHH:mm:ss.SSSZ")
+                .utcOffset(180)
+                .format("YYYY-MM-DD")
             : ""
         }
         errors={errors}
