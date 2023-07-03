@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { utcToZonedTime } from "date-fns-tz";
 
 import {
   ForwardRefRenderFunction,
@@ -162,7 +163,10 @@ const Form: ForwardRefRenderFunction<HTMLFormElement, FormCarProps> = (
         type="date"
         value={
           value && value.dt_compra
-            ? format(new Date(value.dt_compra), "yyyy-MM-dd")
+            ? format(
+                utcToZonedTime(new Date(value.dt_compra), "America/Sao_Paulo"),
+                "yyyy-MM-dd"
+              )
             : ""
         }
         errors={errors}
@@ -178,7 +182,10 @@ const Form: ForwardRefRenderFunction<HTMLFormElement, FormCarProps> = (
         type="date"
         value={
           value && value.dt_venda
-            ? format(new Date(value.dt_venda), "yyyy-MM-dd")
+            ? format(
+                utcToZonedTime(new Date(value.dt_venda), "America/Sao_Paulo"),
+                "yyyy-MM-dd"
+              )
             : ""
         }
         errors={errors}

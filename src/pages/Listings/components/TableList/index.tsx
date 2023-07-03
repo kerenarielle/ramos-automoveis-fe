@@ -1,3 +1,5 @@
+import { format as formatDate, utcToZonedTime } from "date-fns-tz";
+
 import React, { useState } from "react";
 import {
   Table,
@@ -107,11 +109,25 @@ const TableList: React.FC<TableListProps> = ({ data, onDelete }) => {
                     <TableCell className="text-center">{placa}</TableCell>
                     <TableCell className="text-center">
                       {dt_compra
-                        ? new Date(dt_compra).toLocaleDateString()
+                        ? formatDate(
+                            utcToZonedTime(
+                              new Date(dt_compra),
+                              "America/Sao_Paulo"
+                            ),
+                            "dd/MM/yyyy"
+                          )
                         : ""}
                     </TableCell>
                     <TableCell className="text-center">
-                      {dt_venda ? new Date(dt_venda).toLocaleDateString() : ""}
+                      {dt_venda
+                        ? formatDate(
+                            utcToZonedTime(
+                              new Date(dt_venda),
+                              "America/Sao_Paulo"
+                            ),
+                            "dd/MM/yyyy"
+                          )
+                        : ""}
                     </TableCell>
                     <TableCell>
                       {dt_compra ? calcula(new Date(dt_compra), new Date()) : 0}{" "}

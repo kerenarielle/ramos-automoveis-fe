@@ -16,6 +16,7 @@ import accumulator from "../../utils/accumulator";
 import api from "../../services/api";
 
 import "./index.css";
+import { format, utcToZonedTime } from "date-fns-tz";
 
 const Home: React.FC = () => {
   const [data, setData] = useState<Props>({
@@ -69,7 +70,13 @@ const Home: React.FC = () => {
                       <TableCell className="py-3 px-6 text-left">
                         <span>
                           {dt_compra
-                            ? new Date(dt_compra).toLocaleDateString()
+                            ? format(
+                                utcToZonedTime(
+                                  new Date(dt_compra),
+                                  "America/Sao_Paulo"
+                                ),
+                                "dd/MM/yyyy"
+                              )
                             : ""}
                         </span>
                       </TableCell>
@@ -123,7 +130,13 @@ const Home: React.FC = () => {
                       <TableCell className="py-3 px-6 text-left">
                         <span>
                           {dt_venda
-                            ? new Date(dt_venda).toLocaleDateString()
+                            ? format(
+                                utcToZonedTime(
+                                  new Date(dt_venda),
+                                  "America/Sao_Paulo"
+                                ),
+                                "dd/MM/yyyy"
+                              )
                             : ""}
                         </span>
                       </TableCell>
