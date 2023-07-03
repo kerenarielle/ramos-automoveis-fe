@@ -71,10 +71,10 @@ const Home: React.FC = () => {
                         <span className="font-medium">{`${marca} - ${modelo}`}</span>
                       </TableCell>
                       <TableCell className="py-3 px-6 text-left">
+                        <span>{dt_compra ? dt_compra : ""}</span>
                         <span>
                           {dt_compra
-                            ? moment
-                                .utc(dt_compra)
+                            ? moment(dt_compra)
                                 .tz("America/Sao_Paulo")
                                 .format("DD/MM/YYYY")
                             : ""}
@@ -128,10 +128,10 @@ const Home: React.FC = () => {
                         <span className="font-medium">{`${marca} - ${modelo}`}</span>
                       </TableCell>
                       <TableCell className="py-3 px-6 text-left">
+                        <span>{dt_venda ? dt_venda : ""}</span>
                         <span>
                           {dt_venda
-                            ? moment
-                                .utc(dt_venda)
+                            ? moment(dt_venda)
                                 .tz("America/Sao_Paulo")
                                 .format("DD/MM/YYYY")
                             : ""}
