@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import moment from "moment";
+
 import PageContainer from "../../components/PageContainer";
 import ContainerValue from "./components/ContainerValue";
 import { Props } from "./types";
@@ -16,8 +18,6 @@ import accumulator from "../../utils/accumulator";
 import api from "../../services/api";
 
 import "./index.css";
-import { format, utcToZonedTime } from "date-fns-tz";
-import { parseISO } from "date-fns";
 
 const Home: React.FC = () => {
   const [data, setData] = useState<Props>({
@@ -73,13 +73,7 @@ const Home: React.FC = () => {
                       <TableCell className="py-3 px-6 text-left">
                         <span>
                           {dt_compra
-                            ? format(
-                                utcToZonedTime(
-                                  parseISO(dt_compra),
-                                  "America/Sao_Paulo"
-                                ),
-                                "dd/MM/yyyy"
-                              )
+                            ? moment(dt_compra).format("DD/MM/YYYY")
                             : ""}
                         </span>
                       </TableCell>
@@ -133,13 +127,7 @@ const Home: React.FC = () => {
                       <TableCell className="py-3 px-6 text-left">
                         <span>
                           {dt_venda
-                            ? format(
-                                utcToZonedTime(
-                                  parseISO(dt_venda),
-                                  "America/Sao_Paulo"
-                                ),
-                                "dd/MM/yyyy"
-                              )
+                            ? moment(dt_venda).format("DD/MM/YYYY")
                             : ""}
                         </span>
                       </TableCell>
