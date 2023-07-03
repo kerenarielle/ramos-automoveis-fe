@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import moment from "moment";
+import moment from "moment-timezone";
 
 import PageContainer from "../../components/PageContainer";
 import ContainerValue from "./components/ContainerValue";
@@ -73,7 +73,10 @@ const Home: React.FC = () => {
                       <TableCell className="py-3 px-6 text-left">
                         <span>
                           {dt_compra
-                            ? moment(dt_compra).format("DD/MM/YYYY")
+                            ? moment
+                                .utc(dt_compra)
+                                .tz("America/Sao_Paulo")
+                                .format("DD/MM/YYYY")
                             : ""}
                         </span>
                       </TableCell>
@@ -127,7 +130,10 @@ const Home: React.FC = () => {
                       <TableCell className="py-3 px-6 text-left">
                         <span>
                           {dt_venda
-                            ? moment(dt_venda).format("DD/MM/YYYY")
+                            ? moment
+                                .utc(dt_venda)
+                                .tz("America/Sao_Paulo")
+                                .format("DD/MM/YYYY")
                             : ""}
                         </span>
                       </TableCell>
