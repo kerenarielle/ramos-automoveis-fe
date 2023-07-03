@@ -14,8 +14,8 @@ import TablePagination from "@mui/base/TablePagination";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { TableListProps } from "./types";
-import format from "../../../utils/format/priceBrazil";
-import accumulator from "../../../utils/accumulator";
+import format from "../../../../utils/format/priceBrazil";
+import accumulator from "../../../../utils/accumulator";
 
 import "./index.css";
 

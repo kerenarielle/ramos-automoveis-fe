@@ -9,7 +9,7 @@ import {
 import { FunctionComponent, useCallback } from "react";
 import { FilterModalProps } from "./types";
 import { useForm } from "react-hook-form";
-import { CarsProps } from "../../../utils/types/Cars";
+import { CarsProps } from "../../../../utils/types/Cars";
 import "./index.css";
 
 function getData(data: any, field: any) {

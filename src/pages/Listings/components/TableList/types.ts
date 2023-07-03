@@ -1,4 +1,4 @@
-import { CarsProps } from "../../../utils/types/Cars";
+import { CarsProps } from "../../../../utils/types/Cars";
 
 export interface TableListProps {
   data: CarsProps[];

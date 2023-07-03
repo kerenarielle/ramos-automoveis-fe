@@ -5,8 +5,8 @@ import { CarsProps } from "../../utils/types/Cars";
 
 import PageContainer from "../../components/PageContainer";
 import ModalRemove from "../../components/ModalRemove";
-import TableList from "./TableList";
-import FilterModal from "./FilterModal";
+import TableList from "./components/TableList";
+import FilterModal from "./components/FilterModal";
 
 import AddIcon from "@mui/icons-material/Add";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";

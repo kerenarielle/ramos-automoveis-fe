@@ -5,9 +5,9 @@ import { Button, Dialog, DialogTitle } from "@mui/material";
 /**
  * Componentes
  */
-import Inputs from "../../../components/Inputs";
-import InputPrice from "../../../components/InputPrice";
-import InputDate from "../../../components/InputDate";
+import Inputs from "../../../../components/Inputs";
+import InputDate from "../../../../components/InputDate";
+import InputPrice from "../../../../components/InputPrice";
 
 /**
  * Types

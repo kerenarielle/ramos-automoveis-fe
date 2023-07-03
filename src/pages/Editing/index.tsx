@@ -23,7 +23,7 @@ import { Button } from "@mui/material";
 import PageContainer from "../../components/PageContainer";
 import Form from "../../components/Form";
 import ListingsActions from "./components/ListingsActions";
-import ModalDespesas from "./ModalDespesas";
+import ModalDespesas from "./components/ModalDespesas";
 
 import "./index.css";
 
@@ -38,7 +38,7 @@ import api from "../../services/api";
 /**
  * Types
  */
-import { DespesasProps } from "./ModalDespesas/types";
+import { DespesasProps } from "./components/ModalDespesas/types";
 
 const EditCar: FunctionComponent<{}> = (props) => {
   const [data, setData] = useState<CarsProps>();
