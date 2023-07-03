@@ -24,17 +24,7 @@ const Home: React.FC = () => {
     compra: [],
   });
 
-  console.log(
-    data.compra[0].dt_compra
-      ? format(
-          utcToZonedTime(
-            new Date(data.compra[0].dt_compra),
-            "America/Sao_Paulo"
-          ),
-          "dd/MM/yyyy"
-        )
-      : ""
-  );
+  console.log(data);
 
   useEffect(() => {
     async function getInfo() {
