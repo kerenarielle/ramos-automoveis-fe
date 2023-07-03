@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment-timezone";
+import { format } from "date-fns";
+import { utcToZonedTime } from "date-fns-tz";
 
 import PageContainer from "../../components/PageContainer";
 import ContainerValue from "./components/ContainerValue";
@@ -26,6 +28,15 @@ const Home: React.FC = () => {
   });
 
   console.log(data);
+
+  console.log("Data original:", "2023-07-05T03:00:00.000Z");
+
+  console.log(
+    "Data formatada:",
+    moment("2023-07-05T03:00:00.000Z", "YYYY-MM-DDTHH:mm:ss.SSSZ")
+      .tz("America/Sao_Paulo")
+      .format("DD/MM/YYYY")
+  );
 
   useEffect(() => {
     async function getInfo() {
@@ -74,7 +85,7 @@ const Home: React.FC = () => {
                         <span>{dt_compra ? dt_compra : ""}</span>
                         <span>
                           {dt_compra
-                            ? moment(dt_compra)
+                            ? moment(dt_compra, "YYYY-MM-DDTHH:mm:ss.SSSZ")
                                 .tz("America/Sao_Paulo")
                                 .format("DD/MM/YYYY")
                             : ""}
@@ -131,7 +142,7 @@ const Home: React.FC = () => {
                         <span>{dt_venda ? dt_venda : ""}</span>
                         <span>
                           {dt_venda
-                            ? moment(dt_venda)
+                            ? moment(dt_venda, "YYYY-MM-DDTHH:mm:ss.SSSZ")
                                 .tz("America/Sao_Paulo")
                                 .format("DD/MM/YYYY")
                             : ""}
