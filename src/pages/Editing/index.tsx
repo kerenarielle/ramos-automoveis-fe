@@ -22,7 +22,7 @@ import { Button } from "@mui/material";
  */
 import PageContainer from "../../components/PageContainer";
 import Form from "../../components/Form";
-import ListingsActions from "./Components/ListingsActions";
+import ListingsActions from "./components/ListingsActions";
 import ModalDespesas from "./ModalDespesas";
 
 import "./index.css";

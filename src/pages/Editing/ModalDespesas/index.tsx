@@ -16,6 +16,13 @@ import { DespesasProps } from "./types";
 
 import "./index.css";
 
+const options = {
+  timeZone: "America/Sao_Paulo",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+} as const;
+
 type Props = {
   value: DespesasProps;
   open: boolean;
@@ -91,7 +98,9 @@ const ModalDespesas: FunctionComponent<Props> = ({
           type="date"
           value={
             value && value.dt
-              ? new Date(value.dt).toLocaleDateString("en-CA")
+              ? new Intl.DateTimeFormat("pt-BR", options).format(
+                  new Date(value.dt)
+                )
               : ""
           }
           errors={errors}
