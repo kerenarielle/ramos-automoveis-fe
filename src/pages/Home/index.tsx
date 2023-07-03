@@ -17,6 +17,7 @@ import api from "../../services/api";
 
 import "./index.css";
 import { format, utcToZonedTime } from "date-fns-tz";
+import { parseISO } from "date-fns";
 
 const Home: React.FC = () => {
   const [data, setData] = useState<Props>({
@@ -74,7 +75,7 @@ const Home: React.FC = () => {
                           {dt_compra
                             ? format(
                                 utcToZonedTime(
-                                  new Date(dt_compra),
+                                  parseISO(dt_compra),
                                   "America/Sao_Paulo"
                                 ),
                                 "dd/MM/yyyy"
@@ -134,7 +135,7 @@ const Home: React.FC = () => {
                           {dt_venda
                             ? format(
                                 utcToZonedTime(
-                                  new Date(dt_venda),
+                                  parseISO(dt_venda),
                                   "America/Sao_Paulo"
                                 ),
                                 "dd/MM/yyyy"

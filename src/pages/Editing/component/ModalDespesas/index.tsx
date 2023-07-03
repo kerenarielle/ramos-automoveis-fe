@@ -1,6 +1,6 @@
 import { FunctionComponent, useCallback, useRef } from "react";
 import { useForm } from "react-hook-form";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { utcToZonedTime } from "date-fns-tz";
 import { Button, Dialog, DialogTitle } from "@mui/material";
 
@@ -94,7 +94,7 @@ const ModalDespesas: FunctionComponent<Props> = ({
           value={
             value && value.dt
               ? format(
-                  utcToZonedTime(new Date(value.dt), "America/Sao_Paulo"),
+                  utcToZonedTime(parseISO(value.dt), "America/Sao_Paulo"),
                   "yyyy-MM-dd"
                 )
               : ""

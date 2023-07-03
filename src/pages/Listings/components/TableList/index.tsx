@@ -20,6 +20,7 @@ import format from "../../../../utils/format/priceBrazil";
 import accumulator from "../../../../utils/accumulator";
 
 import "./index.css";
+import { parseISO } from "date-fns";
 
 function calcula(dateEarlier: Date, dateLater: Date) {
   var one_day = 1000 * 60 * 60 * 24;
@@ -111,7 +112,7 @@ const TableList: React.FC<TableListProps> = ({ data, onDelete }) => {
                       {dt_compra
                         ? formatDate(
                             utcToZonedTime(
-                              new Date(dt_compra),
+                              parseISO(dt_compra),
                               "America/Sao_Paulo"
                             ),
                             "dd/MM/yyyy"
@@ -122,7 +123,7 @@ const TableList: React.FC<TableListProps> = ({ data, onDelete }) => {
                       {dt_venda
                         ? formatDate(
                             utcToZonedTime(
-                              new Date(dt_venda),
+                              parseISO(dt_venda),
                               "America/Sao_Paulo"
                             ),
                             "dd/MM/yyyy"
