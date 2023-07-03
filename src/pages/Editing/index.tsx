@@ -33,9 +33,9 @@ import format from "../../utils/format/priceBrazil";
 
 import api from "../../services/api";
 
-import { DespesasProps } from "./components/ModalDespesas/types";
-import ModalDespesas from "./components/ModalDespesas";
-import ListingsActions from "./components/ListingsActions";
+import { DespesasProps } from "./component/ModalDespesas/types";
+import ModalDespesas from "./component/ModalDespesas";
+import ListingsActions from "./component/ListingsActions";
 
 /**
  * Types
