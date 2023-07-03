@@ -1,13 +1,14 @@
 import { FunctionComponent, useCallback, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { format } from "date-fns";
 import { Button, Dialog, DialogTitle } from "@mui/material";
 
 /**
  * Componentes
  */
 import Inputs from "../../../../components/Inputs";
-import InputDate from "../../../../components/InputDate";
 import InputPrice from "../../../../components/InputPrice";
+import InputDate from "../../../../components/InputDate";
 
 /**
  * Types
@@ -15,13 +16,6 @@ import InputPrice from "../../../../components/InputPrice";
 import { DespesasProps } from "./types";
 
 import "./index.css";
-
-const options = {
-  timeZone: "America/Sao_Paulo",
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-} as const;
 
 type Props = {
   value: DespesasProps;
@@ -94,14 +88,10 @@ const ModalDespesas: FunctionComponent<Props> = ({
 
         <InputDate
           name="dt"
-          label="Data da despesas"
+          label="Data da despesa"
           type="date"
           value={
-            value && value.dt
-              ? new Intl.DateTimeFormat("pt-BR", options).format(
-                  new Date(value.dt)
-                )
-              : ""
+            value && value.dt ? format(new Date(value.dt), "yyyy-MM-dd") : ""
           }
           errors={errors}
           register={register}
@@ -109,7 +99,6 @@ const ModalDespesas: FunctionComponent<Props> = ({
             required: "Campo obrigatório",
           }}
         />
-
         <div className="actions">
           <Button onClick={handleClose}>Cancelar</Button>
           <Button type="submit">Salvar</Button>

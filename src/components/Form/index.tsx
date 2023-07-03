@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 import {
   ForwardRefRenderFunction,
   forwardRef,
@@ -23,13 +25,6 @@ type FormCarProps = {
   onSave: Function;
 };
 
-const options = {
-  timeZone: "America/Sao_Paulo",
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-} as const;
-
 const Form: ForwardRefRenderFunction<HTMLFormElement, FormCarProps> = (
   { value, onSave },
   ref
@@ -40,6 +35,7 @@ const Form: ForwardRefRenderFunction<HTMLFormElement, FormCarProps> = (
     formState: { errors },
     reset,
   } = useForm<CarsProps>();
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const formRef = ref || useRef<HTMLFormElement>(null);
 
@@ -166,9 +162,7 @@ const Form: ForwardRefRenderFunction<HTMLFormElement, FormCarProps> = (
         type="date"
         value={
           value && value.dt_compra
-            ? new Intl.DateTimeFormat("pt-BR", options).format(
-                new Date(value.dt_compra)
-              )
+            ? format(new Date(value.dt_compra), "yyyy-MM-dd")
             : ""
         }
         errors={errors}
@@ -184,9 +178,7 @@ const Form: ForwardRefRenderFunction<HTMLFormElement, FormCarProps> = (
         type="date"
         value={
           value && value.dt_venda
-            ? new Intl.DateTimeFormat("pt-BR", options).format(
-                new Date(value.dt_venda)
-              )
+            ? format(new Date(value.dt_venda), "yyyy-MM-dd")
             : ""
         }
         errors={errors}
