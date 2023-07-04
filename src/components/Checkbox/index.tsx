@@ -29,6 +29,7 @@ const CheckboxContainer: FunctionComponent<CheckboxLabelProps> = ({
             id={name}
             name={name}
             defaultValue={value}
+            checked={value}
             {...register(name, validationSchema)}
           />
         }

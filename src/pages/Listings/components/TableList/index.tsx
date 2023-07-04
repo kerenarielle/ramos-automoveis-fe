@@ -136,13 +136,12 @@ const TableList: React.FC<TableListProps> = ({ data, onDelete }) => {
                       {consignado ? "Sim" : "Não"}
                     </TableCell>
                     <TableCell className="text-center">
-                      R$
                       {valor_venda
-                        ? (
-                            ((parseInt(valor_venda) - parseInt(valor_compra)) /
-                              parseInt(valor_venda)) *
-                            100
-                          ).toFixed(2)
+                        ? format(
+                            parseInt(valor_venda) -
+                              parseInt(valor_compra) -
+                              (!consignado ? accumulator(despesas) : 0)
+                          )
                         : 0}
                     </TableCell>
                   </TableRow>

@@ -3,6 +3,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { IconButton, List, ListItem, ListItemText } from "@mui/material";
 import React, { FunctionComponent, useCallback } from "react";
 import { ExpensesProps } from "../../../../utils/types/Expenses";
+import format from "../../../../utils/format/priceBrazil";
 
 type ListingsActionsProps = {
   despesas: ExpensesProps[];
@@ -54,7 +55,7 @@ const ListingsActions: FunctionComponent<ListingsActionsProps> = ({
               </IconButton>,
             ]}
           >
-            <ListItemText primary={description} secondary={`R$ ${value}`} />
+            <ListItemText primary={description} secondary={format(value)} />
           </ListItem>
         ))}
       </List>
